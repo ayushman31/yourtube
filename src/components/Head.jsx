@@ -15,7 +15,7 @@ const Head = () => {
     }
 
   return (
-    <div className=' header grid grid-flow-col  '>
+    <div className=' header grid grid-flow-col '>
         <IconContext.Provider value={{ color: "#a855f7", className: "global-class-name" }}>
         <div className='menu-icon col-span-1  ml-4 mt-5' ><button className='h-12 w-12'>
             <CgMenuOreos onClick={() => toggleMenuHandler()} className='h-full w-full'/></button></div></IconContext.Provider>
