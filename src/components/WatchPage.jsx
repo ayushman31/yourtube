@@ -29,7 +29,12 @@ const WatchPage = () => {
     //console.log(videoInfo); 
   }
  
-  if (!videoInfo) return <div>Loading...</div>
+  if (!videoInfo) return (
+  <div className="w-full">
+    <div className="flex justify-center items-center h-screen">
+      <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-purple-500 border-solid"></div>
+    </div>
+  </div>)
    
   const { snippet, contentDetails, statistics } = videoInfo;
   const { channelTitle, title , channelId } = snippet;
@@ -49,7 +54,7 @@ const WatchPage = () => {
       <iframe
         width="980"
         height="480"
-        src={"https://www.youtube.com/embed/"+searchParams.get('v')}
+        src={`https://www.youtube.com/embed/${searchParams.get('v')}?autoplay=1`}
         title="YouTube video player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

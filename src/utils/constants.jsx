@@ -6,3 +6,6 @@ export const VIDEO_API = "https://youtube.googleapis.com/youtube/v3/videos?part=
 
 export const CHANNEL_API = "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id="
 
+//export const SEARCH_API = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q="; //+&key=
+//export const SEARCH_API = "http://suggestqueries.google.com/complete/search?client=chrome&ds=yt&q="; //+&key=
+export const SEARCH_API = "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q="
