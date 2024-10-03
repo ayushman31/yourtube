@@ -16,3 +16,5 @@ const searchSlice = createSlice({
 
 export const {cacheResults} = searchSlice.actions;
 export default searchSlice.reducer;
+
+// to limit the bloating of our cache just limit the cache to [100]: LRU cache (least recently used)
