@@ -4,6 +4,7 @@ import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import { CHANNEL_API, VIDEO_API } from "../utils/constants";
 import Comments from "./Comments";
+import LiveChat from "./LiveChat";
 const KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
 const WatchPage = () => {
@@ -56,7 +57,8 @@ const WatchPage = () => {
   getChannelImage();
 
   return (
-    <div className="m-10 ml-20 ">
+    <div className="m-10 ml-20 w-full">
+      <div className="flex ">
       <div>
         <iframe
           width="980"
@@ -71,10 +73,12 @@ const WatchPage = () => {
           allowFullScreen
           className="rounded-xl "
         ></iframe>
-        <h1 className="font-bold text-xl m-2 ml-0">{title}</h1>
+        
+      </div>
+      <div className="w-full"><LiveChat /></div>
       </div>
 
-      
+      <h1 className="font-bold text-xl m-2 ml-0">{title}</h1>
       <div className="flex">
         <img
           alt="Channel img"
