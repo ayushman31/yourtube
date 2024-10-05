@@ -9,3 +9,5 @@ export const CHANNEL_API = "https://youtube.googleapis.com/youtube/v3/channels?p
 //export const SEARCH_API = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q="; //+&key=
 //export const SEARCH_API = "http://suggestqueries.google.com/complete/search?client=chrome&ds=yt&q="; //+&key=
 export const SEARCH_API = "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q="
+
+export const COMMENTS_API = "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=" //+&key=

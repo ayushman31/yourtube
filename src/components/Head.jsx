@@ -32,10 +32,10 @@ const Head = () => {
   }, [searchQuery])
 
   const getSearchSuggestions = async() => {
-    console.log("API- " +searchQuery);
+    //console.log("API- " +searchQuery);
     const data = await fetch(SEARCH_API+searchQuery);
     const json = await data.json();
-    console.log(json[1]);
+    //console.log(json[1]);
     setSuggestions(json[1])
 
     //update cache

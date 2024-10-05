@@ -3,7 +3,7 @@ import "../src/App.css"
 import Body from "./components/Body";
 import Head from "./components/Head";
 import store from "./utils/store";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
 
@@ -21,11 +21,13 @@ const appRouter = createBrowserRouter([{
 
 function App() {
   return (
+    
     <Provider store={store}>
+      
     <div className="App bg-purple-100 min-h-screen overflow-hidden">
       <Head />
       <RouterProvider router={appRouter} />
-    </div></Provider>
+    </div></Provider> 
   );
 }
 
