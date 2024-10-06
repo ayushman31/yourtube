@@ -11,3 +11,5 @@ export const CHANNEL_API = "https://youtube.googleapis.com/youtube/v3/channels?p
 export const SEARCH_API = "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q="
 
 export const COMMENTS_API = "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=" //+&key=
+
+export const OFFSET_LIVECHAT = 15;
