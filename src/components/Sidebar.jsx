@@ -31,9 +31,9 @@ const Sidebar = () => {
       <div className='flex gap-2 items-center m-8 mb-4 ml-0 mr-0 w-11/12 shadow-sm hover:shadow-lg'>
       <IoMusicalNotes /> Music
       </div>
-      <div className='flex gap-2 items-center m-8 mb-4 ml-0 mr-0 w-11/12 shadow-sm hover:shadow-lg'>
+      <Link to={'premium'}><div className='flex gap-2 items-center m-8 mb-4 ml-0 mr-0 w-11/12 shadow-sm hover:shadow-lg'>
       <MdOutlineWorkspacePremium /> Premium
-      </div>
+      </div></Link>
     </div></IconContext.Provider>
   )
 };

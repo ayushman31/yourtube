@@ -6,6 +6,14 @@ import store from "./utils/store";
 import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
+import Demo from "./components/Demo";
+import Demo2 from "./components/Demo2";
+import Premium from "./components/Premium";
+import { Buffer } from 'buffer';
+import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
+window.Buffer = Buffer;
+
 
 const appRouter = createBrowserRouter([{
   path: '/',
@@ -16,11 +24,20 @@ const appRouter = createBrowserRouter([{
   },{
     path: 'watch',
     element: <WatchPage />
+  },{
+    path: 'demo',
+    element: <><Demo/><Demo2/></>
+  },{
+    path: 'premium',
+    element: <Premium />
   }]
 }])
 
 function App() {
   return (
+    <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
+      <WalletProvider wallets={[]} autoConnect>
+        <WalletModalProvider>
     
     <Provider store={store}>
       
@@ -28,6 +45,9 @@ function App() {
       <Head />
       <RouterProvider router={appRouter} />
     </div></Provider> 
+    </WalletModalProvider>
+      </WalletProvider>
+    </ConnectionProvider>
   );
 }
 
