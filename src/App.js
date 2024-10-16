@@ -1,4 +1,4 @@
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import "../src/App.css"
 import Body from "./components/Body";
 import Head from "./components/Head";
@@ -12,6 +12,7 @@ import Premium from "./components/Premium";
 import { Buffer } from 'buffer';
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
+
 window.Buffer = Buffer;
 
 
@@ -34,21 +35,21 @@ const appRouter = createBrowserRouter([{
 }])
 
 function App() {
+  const isPremium = useSelector((state) => state.premium.isPremium);
   return (
-    <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
-      <WalletProvider wallets={[]} autoConnect>
-        <WalletModalProvider>
     
-    <Provider store={store}>
-      
-    <div className="App bg-purple-100 min-h-screen overflow-hidden">
-      <Head />
-      <RouterProvider router={appRouter} />
-    </div></Provider> 
-    </WalletModalProvider>
-      </WalletProvider>
-    </ConnectionProvider>
+      <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
+        <WalletProvider wallets={[]} autoConnect>
+          <WalletModalProvider>
+            <div className={`App min-h-screen overflow-hidden ${isPremium ? 'bg-purple-950' : 'bg-purple-100'}`}>
+              <Head />
+              <RouterProvider router={appRouter} />
+            </div>
+          </WalletModalProvider> 
+        </WalletProvider>
+      </ConnectionProvider>
   );
 }
+
 
 export default App;

@@ -7,12 +7,13 @@ import { Buffer } from 'buffer';
     WalletMultiButton,
   } from "@solana/wallet-adapter-react-ui";
   import "@solana/wallet-adapter-react-ui/styles.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { buyPremium } from "../utils/premiumSlice";
 
 window.Buffer = Buffer;
 
 const Premium = () => {
+  const isPremium = useSelector(state => state.premium.isPremium);
     const dispatch = useDispatch()
     const wallet = useWallet();
     const {connection} = useConnection();
@@ -39,11 +40,21 @@ const Premium = () => {
         <p className="mt-10 text-xl text-purple-500">Better UI, Dark Mode just with one click</p>
         <p className="text-gray-600">At just 0.5 SOL</p>
       </div>
+
+      <div>
+        {isPremium ?(<div>
+      <div className="text-center m-20">
+        <h1 className="font-bold text-3xl italic">Congratulations! You have Successfully bought the Premium Version of Yourtube.</h1>
+      </div>
+      </div> ):<div>
       <div className="text-center m-20">
         
         <button onClick={ sendTokens } className="bg-purple-500 p-4 rounded-2xl text-white hover:bg-purple-600">Buy Now</button>
       </div>
       <WalletMultiButton />
+      </div>}
+      
+      </div>
     </div>
     
   );

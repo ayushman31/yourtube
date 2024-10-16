@@ -10,11 +10,12 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
+  const isPremium = useSelector(state => state.premium.isPremium);
 
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   if(!isMenuOpen) return null;
   return (
-    <IconContext.Provider value={{ color: "#a855f7", className: "global-class-name" }}>
+    <IconContext.Provider value={{ color: isPremium? "#030712" :"#a855f7", className: "global-class-name" }}>
     <div className='bg-purple-50 bg-opacity-50 p-5 w-56 m-5 ml-0 rounded-sm shadow-lg flex-shrink-0'>
     <Link to={'/'}><div className='flex gap-2 items-center m-4 ml-0 mr-0 w-11/12 shadow-sm hover:shadow-lg'>
       <GoHome /> Home
