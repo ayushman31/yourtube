@@ -11,8 +11,12 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   const isPremium = useSelector(state => state.premium.isPremium);
-
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  if(isMenuOpen){
+    document.body.style.overflow = 'hidden';
+  }else{
+    document.body.style.overflow = 'unset';
+  } 
   if(!isMenuOpen) return null;
   return (
     <IconContext.Provider value={{ color: isPremium? "#030712" :"#a855f7", className: "global-class-name" }}>

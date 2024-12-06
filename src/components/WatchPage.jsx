@@ -75,7 +75,7 @@ const WatchPage = () => {
         ></iframe>
         
       </div>
-      <div className="w-full"><LiveChat /></div>
+      {/* <div className="w-full"><LiveChat /></div> */}
       </div>
 
       <h1 className="font-bold text-xl m-2 ml-0">{title}</h1>

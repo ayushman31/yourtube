@@ -32,18 +32,27 @@ const Head = () => {
 
   }, [searchQuery])
 
-  const getSearchSuggestions = async() => {
-    //console.log("API- " +searchQuery);
-    const data = await fetch(SEARCH_API+searchQuery);
-    const json = await data.json();
-    //console.log(json[1]);
-    setSuggestions(json[1])
+  const getSearchSuggestions = async () => {
+    try {
+        // Fetching data from the search API
+        const response = await fetch(`${SEARCH_API}${searchQuery}`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const json = await response.json();
 
-    //update cache
-    dispatch(cacheResults({
-        [searchQuery] : json[1] 
-    }))
-  }
+        // Setting suggestions state
+        setSuggestions(json[1]);
+
+        // Updating cache with the new search results
+        dispatch(cacheResults({
+            [searchQuery]: json[1]
+        }));
+    } catch (error) {
+        console.error('Error fetching search suggestions:', error);
+    }
+};
+
   
 
   const dispatch = useDispatch();

@@ -12,30 +12,44 @@ import Premium from "./components/Premium";
 import { Buffer } from 'buffer';
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
+import Login from "./components/Login";
 
 window.Buffer = Buffer;
 
 
-const appRouter = createBrowserRouter([{
-  path: '/',
-  element: <Body />,
-  children: [{
+const appRouter = createBrowserRouter([
+  {
     path: '/',
-    element: <MainContainer />
-  },{
-    path: 'watch',
-    element: <WatchPage />
-  },{
-    path: 'demo',
-    element: <><Demo/><Demo2/></>
-  },{
-    path: 'premium',
-    element: <Premium />
-  }]
-}])
+    element: <Body />,
+    children: [
+      {
+        path: '/',
+        element: <MainContainer />
+      },
+      {
+        path: 'watch',
+        element: <WatchPage />
+      },
+      {
+        path: 'demo',
+        element: <><Demo /><Demo2 /></>
+      },
+      {
+        path: 'premium',
+        element: <Premium />
+      }
+    ]
+  },
+  {
+    path: 'signup',
+    element: <Login />
+  }
+]);
+
 
 function App() {
   const isPremium = useSelector((state) => state.premium.isPremium);
+ 
   return (
     
       <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
