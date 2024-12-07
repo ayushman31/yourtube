@@ -1,10 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleLoginPage } from "../utils/appSlice";
 
 const Login = () => {
     const [isSignIn , setIsSignIn] = useState(true);
+    const isLogin = useSelector(store => store.app.isLoginPage);
+    const dispatch = useDispatch();
     const toggleSignIn = () => {
         setIsSignIn(!isSignIn)
     }
+
+    useEffect(() => {
+        dispatch(toggleLoginPage());
+
+        return () => {
+            dispatch(toggleLoginPage());
+        }
+    } , [])
   return (
     <div>
         <form onSubmit={(e) => e.preventDefault()} className="absolute w-3/12 p-12 bg-white bg-opacity-70 m-auto right-0 left-0 top-0 my-40 rounded-3xl outline outline-purple-400">

@@ -11,6 +11,7 @@ const KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
 const Head = () => {
   const isPremium = useSelector(state => state.premium.isPremium);
+  const isLogin = useSelector(state => state.app.isLoginPage)
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions , setSuggestions] = useState([]);
   const [showSuggestions , setShowSuggestions] = useState(false);
@@ -61,7 +62,9 @@ const Head = () => {
     dispatch(toggleMenu());
   };
 
-  return isPremium ?  (
+  if(isLogin) return;
+
+  return ( isPremium ?  (
     <div className=" header grid grid-flow-col ">
       <IconContext.Provider
         value={{ color: "#030712", className: "global-class-name" }}
@@ -184,7 +187,7 @@ const Head = () => {
         </div>
       </IconContext.Provider>
     </div>
-  );
+  ) );
 };
 
 export default Head;
