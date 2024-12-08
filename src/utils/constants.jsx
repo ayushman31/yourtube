@@ -13,3 +13,5 @@ export const SEARCH_API = "http://suggestqueries.google.com/complete/search?clie
 export const COMMENTS_API = "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=" //+&key=
 
 export const OFFSET_LIVECHAT = 15;
+
+export const BACKEND_URL = "http://localhost:3002/api/v1"

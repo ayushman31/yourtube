@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
+import useLogOut from "./endpoints/useLogOut";
+import { useNavigate } from "react-router-dom";
 const KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
 const Head = () => {
@@ -15,7 +17,6 @@ const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions , setSuggestions] = useState([]);
   const [showSuggestions , setShowSuggestions] = useState(false);
-
   const searchCache = useSelector(store => store.search)
   
   useEffect(() => {
@@ -61,6 +62,14 @@ const Head = () => {
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
+
+  // const logOut = useLogOut();
+
+  const logOutHandle = () => {
+    localStorage.removeItem("token");
+    window.location.href = '/login';
+    
+  }
 
   if(isLogin) return;
 
@@ -119,7 +128,7 @@ const Head = () => {
       <IconContext.Provider
         value={{ color: "#030712", className: "global-class-name" }}
       >
-        <div className=" col-span-1 right mt-5 self-center place-self-end mr-10 h-8 w-8">
+        <div onClick={logOutHandle} className=" col-span-1 right mt-5 self-center place-self-end mr-10 h-8 w-8">
           <FaRegUser className="red h-full  w-full" />
         </div>
       </IconContext.Provider>
@@ -182,7 +191,7 @@ const Head = () => {
       <IconContext.Provider
         value={{ color: "#a855f7", className: "global-class-name" }}
       >
-        <div className=" col-span-1 right mt-5 self-center place-self-end mr-10 h-8 w-8">
+        <div onClick={logOutHandle} className=" col-span-1 right mt-5 self-center place-self-end mr-10 h-8 w-8 cursor-pointer">
           <FaRegUser className="red h-full  w-full" />
         </div>
       </IconContext.Provider>
