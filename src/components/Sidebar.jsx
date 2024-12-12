@@ -24,9 +24,9 @@ const Sidebar = () => {
     <Link to={'/'}><div className='flex gap-2 items-center m-4 ml-0 mr-0 w-11/12 shadow-sm hover:shadow-lg'>
       <GoHome /> Home
       </div></Link>
-      <div className='flex gap-2 items-center m-8 ml-0 mr-0 w-11/12 shadow-sm hover:shadow-lg'>
+      <Link to={'/liked'}><div className='flex gap-2 items-center m-8 ml-0 mr-0 w-11/12 shadow-sm hover:shadow-lg'>
       <BiLike /> Liked Videos
-      </div>
+      </div></Link>
       <div className='flex gap-2 items-center m-8 ml-0 mr-0 w-11/12 shadow-sm hover:shadow-lg'>
       <MdSportsBaseball /> Sports
       </div>

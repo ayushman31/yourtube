@@ -27,7 +27,7 @@ const Comments = () => {
     getComments();
   }, []);
   return (
-    <div className="mt-8 ">
+    <div className="mt-8">
       <div onClick={toggleCommentSection} className="flex w-1/6 items-center gap-4 cursor-pointer">
       <h1 className="text-2xl ">Comments</h1>
       <Down />

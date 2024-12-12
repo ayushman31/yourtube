@@ -5,12 +5,16 @@ import { useSearchParams } from "react-router-dom";
 import { CHANNEL_API, VIDEO_API } from "../utils/constants";
 import Comments from "./Comments";
 import LiveChat from "./LiveChat";
+import { Like } from "./icons/Like";
+import useLike from "./endpoints/useLike";
 const KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
   const [videoInfo, setVideoInfo] = useState(null);
   const [channelImage, setChannelImage] = useState(null);
+  const likeVideo = useLike();
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const dispatch = useDispatch(); //for closing the sidebar
   useEffect(() => {
@@ -56,29 +60,44 @@ const WatchPage = () => {
   };
   getChannelImage();
 
+  const likeHandle = () => {
+    if (searchParams.get("v")) likeVideo(searchParams.get("v"));
+    setIsAnimating(true);
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 500);
+  };
+
   return (
     <div className="m-10 ml-20 w-full">
       <div className="flex ">
-      <div>
-        <iframe
-          width="980"
-          height="480"
-          src={`https://www.youtube.com/embed/${searchParams.get(
-            "v"
-          )}?autoplay=1`}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-          className="rounded-xl "
-        ></iframe>
-        
-      </div>
-      {/* <div className="w-full"><LiveChat /></div> */}
+        <div>
+          <iframe
+            width="980"
+            height="480"
+            src={`https://www.youtube.com/embed/${searchParams.get(
+              "v"
+            )}?autoplay=1`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="rounded-xl "
+          ></iframe>
+        </div>
+        {/* <div className="w-full"><LiveChat /></div> */}
       </div>
 
-      <h1 className="font-bold text-xl m-2 ml-0">{title}</h1>
+      <div className=" w-[70%]  mt-2 flex justify-between">
+        <h1 className="font-bold text-xl ml-0 ">{title} </h1>
+        <div
+          onClick={likeHandle}
+          className={`mr-20 cursor-pointer ${isAnimating ? "animated" : ""}`}
+        >
+          <Like />
+        </div>
+      </div>
       <div className="flex">
         <img
           alt="Channel img"

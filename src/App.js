@@ -13,6 +13,7 @@ import { Buffer } from 'buffer';
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import Login from "./components/Login";
+import LikedContainer from "./components/LikedContainer";
 
 window.Buffer = Buffer;
 
@@ -37,6 +38,10 @@ const appRouter = createBrowserRouter([
       {
         path: 'premium',
         element: <Premium />
+      },
+      {
+        path: 'liked',
+        element: <LikedContainer />
       }
     ]
   },
